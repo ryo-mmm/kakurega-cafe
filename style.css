@@ -1,0 +1,535 @@
+/* =========================================
+   Variables - 海と砂浜のパレット
+   ========================================= */
+:root {
+    --sand-light: #f7f3f0;
+    --sand-mid: #f0ece7;
+    --sand-dark: #e8e2db;
+    --sea-blue: #7a8d91;
+    --sea-deep: #4f6d72;
+    --text-main: #4a4542;
+    --text-sub: #8c8581;
+    --white: #ffffff;
+    --font-serif: 'Shippori Mincho', serif;
+    --font-accent: 'Dancing Script', cursive;
+    --transition-base: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* =========================================
+   Base
+   ========================================= */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--sand-light);
+    color: var(--text-main);
+    font-family: var(--font-serif);
+    line-height: 2.0;
+    letter-spacing: 0.05em;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* =========================================
+   Reusable Components
+   ========================================= */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* 英語アクセント（筆記体） */
+.en-accent {
+    font-family: var(--font-accent);
+    color: var(--sea-blue);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+
+/* セクション見出し — 細ラインで挟む */
+.section-title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-title h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 24px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background-color: var(--sea-blue);
+}
+
+/* サブタイトル（Introduction など） */
+.sub-title {
+    font-family: var(--font-accent);
+    color: var(--sea-blue);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 16px;
+}
+
+/* =========================================
+   Scroll Fade-in Animation
+   ========================================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s var(--transition-base) forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   1. Hero Section (FV)
+   ========================================= */
+#hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.28)),
+        url('img/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* パララックス */
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: var(--white);
+}
+
+/* ナビゲーション */
+.nav-minimal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 24px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: var(--font-accent);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* ヒーローテキストエリア */
+.hero-inner {
+    width: 100%;
+    padding: 0 60px;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.hero-text .en-accent {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 0;
+    letter-spacing: 0.15em;
+    animation: fadeInUp 1.2s 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    font-size: 2.5rem;
+    letter-spacing: 0.3em;
+    line-height: 1.6;
+    height: 400px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+    animation: fadeInUp 1.2s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ヒーロー下部のスクロール誘導 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* =========================================
+   2. Concept (Introduction)
+   ========================================= */
+#concept {
+    padding: 160px 0;
+    text-align: center;
+    background-color: var(--sand-light);
+}
+
+#concept h2 {
+    font-size: 1.9rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    letter-spacing: 0.1em;
+}
+
+#concept p {
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 2.4;
+}
+
+/* =========================================
+   3. News Area (Ticker)
+   ========================================= */
+#news {
+    background-color: var(--sand-dark);
+    padding: 18px 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(122, 141, 145, 0.2);
+    border-bottom: 1px solid rgba(122, 141, 145, 0.2);
+}
+
+.news-ticker {
+    max-width: 800px;
+    margin: 0 auto;
+    height: 28px;
+    overflow: hidden;
+    position: relative;
+}
+
+.news-list {
+    animation: ticker 15s infinite linear;
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-list li {
+    line-height: 28px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    letter-spacing: 0.08em;
+}
+
+@keyframes ticker {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-75%); }
+}
+
+/* =========================================
+   4. Menu
+   ========================================= */
+#menu {
+    padding: 120px 0;
+    background-color: var(--sand-mid);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+}
+
+.menu-item {
+    text-align: center;
+}
+
+/* 画像コンテナ — ホバー時に拡大 */
+.menu-img {
+    overflow: hidden;
+    margin-bottom: 28px;
+    position: relative;
+}
+
+.menu-img img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    filter: saturate(0.75) contrast(0.92);
+    transition: transform 0.9s var(--transition-base),
+                filter 0.9s var(--transition-base);
+}
+
+.menu-img:hover img {
+    transform: scale(1.06);
+    filter: saturate(0.95) contrast(0.97);
+}
+
+.menu-item h3 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.menu-item p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.9;
+}
+
+.price {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--sea-deep);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    padding: 4px 16px;
+    border: 1px solid rgba(79, 109, 114, 0.35);
+}
+
+/* =========================================
+   5. Gallery
+   ========================================= */
+#gallery {
+    padding: 120px 0;
+    background-color: var(--sand-light);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* 1枚目を大きく見せる */
+.gallery-item:first-child {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    transition: transform 0.9s var(--transition-base),
+                opacity 0.6s ease;
+    opacity: 0.88;
+}
+
+.gallery-item:first-child img {
+    aspect-ratio: auto;
+}
+
+/* ホバーオーバーレイ */
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(74, 69, 66, 0);
+    transition: background 0.5s ease;
+    pointer-events: none;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+    opacity: 1;
+}
+
+.gallery-item:hover::after {
+    background: rgba(74, 69, 66, 0.08);
+}
+
+/* =========================================
+   6. Access
+   ========================================= */
+#access {
+    padding: 120px 0;
+    background-color: var(--sand-dark);
+}
+
+.access-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.map-wrap {
+    overflow: hidden;
+    background-color: var(--sand-mid);
+}
+
+#custom-map {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-sub);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+}
+
+.access-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.access-info p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    padding-left: 16px;
+    border-left: 1px solid rgba(122, 141, 145, 0.45);
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+#footer {
+    padding: 120px 0 60px;
+    text-align: center;
+    background-color: var(--text-main);
+    color: rgba(247, 243, 240, 0.7);
+}
+
+.closing-text {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 48px;
+    letter-spacing: 0.15em;
+    color: var(--sand-light);
+}
+
+.footer-logo {
+    font-family: var(--font-accent);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--sea-blue);
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+}
+
+/* フッター中央の細いセパレーター */
+.footer-logo::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 50px;
+    background: rgba(122, 141, 145, 0.4);
+    margin: 0 auto 24px;
+}
+
+.copyright {
+    font-size: 0.65rem;
+    color: rgba(247, 243, 240, 0.4);
+    letter-spacing: 0.15em;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+@media (max-width: 768px) {
+    .container,
+    .container-narrow {
+        padding: 0 24px;
+    }
+
+    .nav-minimal {
+        padding: 20px 24px;
+    }
+
+    .hero-inner {
+        padding: 0 24px;
+    }
+
+    .vertical-text {
+        font-size: 1.8rem;
+        height: 300px;
+    }
+
+    #concept,
+    #menu,
+    #gallery,
+    #access,
+    #footer {
+        padding: 80px 0;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .gallery-item:first-child {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .access-content {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .section-title {
+        margin-bottom: 50px;
+    }
+
+    #hero {
+        background-attachment: scroll; /* iOS でのパフォーマンス対策 */
+    }
+}

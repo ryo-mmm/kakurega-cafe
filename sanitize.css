@@ -1,0 +1,93 @@
+/**
+ * sanitize.css for Cafe del Mar
+ * ブラウザ間の差異を解消し、デザインの自由度を高めるための土台
+ */
+
+/* 1. ボックスモデルを直感的に（paddingやborderを幅に含める） */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+/* 2. デフォルトの余白をリセットし、フォントのレンダリングを最適化 */
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    word-break: break-word;
+}
+
+body {
+    margin: 0;
+    /* カフェLPでは後ほどGoogle Fontsの明朝体を適用するため、ここでは標準的な指定 */
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 3. HTML5要素の表示を一貫させる */
+main {
+    display: block;
+}
+
+/* 4. 見出し・段落のデフォルトマージンをリセット */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+}
+
+/* 5. リスト・リンクのデザインをリセット */
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 6. 画像をレスポンシブ対応に（親要素からはみ出さない） */
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+    /* カフェLP向け：画像同士の隙間をなくす */
+    display: block;
+}
+
+/* 7. ボタンや入力フォームのスタイルを統一 */
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* 8. テーブルのボーダーを重ねる */
+table {
+    border-collapse: collapse;
+    text-indent: 0;
+    border-color: inherit;
+}
