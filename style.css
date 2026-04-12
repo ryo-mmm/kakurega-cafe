@@ -98,19 +98,31 @@ img {
 }
 
 /* =========================================
-   Scroll Fade-in Animation
+   Scroll Reveal Animation
    ========================================= */
-.fade-in {
+.fade-in,
+.scroll-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s var(--transition-base) forwards;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.fade-in.is-visible,
+.scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ディレイ付きアイテム（stagger） */
+.scroll-reveal[data-delay="100"] { transition-delay: 0.1s; }
+.scroll-reveal[data-delay="200"] { transition-delay: 0.2s; }
+.scroll-reveal[data-delay="300"] { transition-delay: 0.3s; }
+
+/* ヒーロー内テキストは CSS animation を維持 */
 @keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================================
@@ -438,6 +450,100 @@ img {
 }
 
 /* =========================================
+   7. Contact Form
+   ========================================= */
+#contact {
+    padding: 120px 0;
+    background-color: var(--sand-mid);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--text-sub);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.required {
+    font-size: 0.65rem;
+    color: var(--white);
+    background-color: var(--sea-blue);
+    padding: 2px 7px;
+    letter-spacing: 0.08em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid #c8c2bb;
+    padding: 12px 16px;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    letter-spacing: 0.05em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+.form-group textarea {
+    resize: vertical;
+    line-height: 2.0;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #bbb5b0;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--sea-blue);
+    box-shadow: 0 0 0 3px rgba(122, 141, 145, 0.15);
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.form-submit button {
+    display: inline-block;
+    padding: 14px 56px;
+    background: transparent;
+    border: 1px solid var(--sea-blue);
+    color: var(--sea-deep);
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: background var(--transition-base), color var(--transition-base);
+}
+
+.form-submit button:hover {
+    background: var(--sea-blue);
+    color: var(--white);
+}
+
+/* =========================================
    Footer
    ========================================= */
 #footer {
@@ -506,6 +612,7 @@ img {
     #menu,
     #gallery,
     #access,
+    #contact,
     #footer {
         padding: 80px 0;
     }

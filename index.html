@@ -29,7 +29,7 @@
     <main>
         <section id="concept">
             <div class="container-narrow">
-                <div class="fade-in">
+                <div class="fade-in scroll-reveal">
                     <span class="sub-title">Introduction</span>
                     <h2>刻を忘れる、海辺の特等席。</h2>
                     <p>
@@ -55,12 +55,12 @@
 
         <section id="menu">
             <div class="container">
-                <div class="section-title">
+                <div class="section-title scroll-reveal">
                     <span class="en-accent">Menu</span>
                     <h2>お品書き</h2>
                 </div>
                 <div class="menu-grid">
-                    <div class="menu-item">
+                    <div class="menu-item scroll-reveal">
                         <div class="menu-img">
                             <img src="img/menu-coffee.jpg"
                                 alt="海風のブレンド">
@@ -69,7 +69,7 @@
                         <p>ほのかな塩気を感じる、爽やかな後味の深煎りコーヒー。</p>
                         <span class="price">¥650</span>
                     </div>
-                    <div class="menu-item">
+                    <div class="menu-item scroll-reveal" data-delay="200">
                         <div class="menu-img">
                             <img src="img/menu-tart.jpg"
                                 alt="季節のタルト">
@@ -84,25 +84,25 @@
 
         <section id="gallery">
             <div class="container">
-                <div class="section-title">
+                <div class="section-title scroll-reveal">
                     <span class="en-accent">Moments</span>
                     <h2>風景</h2>
                 </div>
                 <div class="gallery-grid">
-                    <div class="gallery-item"><img src="img/gallery-sea.jpg"       alt="風景1"></div>
-                    <div class="gallery-item"><img src="img/gallery-interior.jpg"  alt="風景2"></div>
-                    <div class="gallery-item"><img src="img/gallery-cafe.jpg"      alt="風景3"></div>
+                    <div class="gallery-item scroll-reveal"><img src="img/gallery-sea.jpg"       alt="風景1"></div>
+                    <div class="gallery-item scroll-reveal" data-delay="100"><img src="img/gallery-interior.jpg"  alt="風景2"></div>
+                    <div class="gallery-item scroll-reveal" data-delay="200"><img src="img/gallery-cafe.jpg"      alt="風景3"></div>
                 </div>
             </div>
         </section>
 
         <section id="access">
             <div class="container">
-                <div class="section-title">
+                <div class="section-title scroll-reveal">
                     <span class="en-accent">Access</span>
                     <h2>場所</h2>
                 </div>
-                <div class="access-content">
+                <div class="access-content scroll-reveal">
                     <div class="map-wrap">
                         <div id="custom-map"
                             style="background: #eee; height: 300px; display: flex; align-items: center; justify-content: center;">
@@ -117,6 +117,35 @@
                 </div>
             </div>
         </section>
+        <section id="contact">
+            <div class="container-narrow">
+                <div class="section-title scroll-reveal">
+                    <span class="en-accent">Contact</span>
+                    <h2>お問い合わせ</h2>
+                </div>
+                <form class="contact-form scroll-reveal" action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">お名前 <span class="required">必須</span></label>
+                        <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス <span class="required">必須</span></label>
+                        <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">件名</label>
+                        <input type="text" id="subject" name="subject" placeholder="席のご予約について">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">メッセージ <span class="required">必須</span></label>
+                        <textarea id="message" name="message" rows="6" placeholder="お気軽にご連絡ください。" required></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit">送信する</button>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer id="footer">
@@ -127,6 +156,18 @@
         </div>
     </footer>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>
