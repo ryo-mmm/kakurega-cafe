@@ -18,7 +18,7 @@
 
 **目的**
 - HTML / CSS / JavaScript を使ったLP制作のポートフォリオ作品として制作
-- デザインの参考サイト（[SANKOU!](https://sankoudesign.com/)）を参考に、国内カフェサイトのトレンドを取り入れた実践的なデザインを習得する
+- 国内カフェサイトのデザイントレンドを参考に、実践的なデザインを習得する
 
 **ターゲット**
 - 30〜50代の女性を中心とした、日常に「余白」を求めているユーザー
@@ -81,7 +81,6 @@
 | フォント | [Shippori Mincho](https://fonts.google.com/specimen/Shippori+Mincho)（明朝体）/ [Dancing Script](https://fonts.google.com/specimen/Dancing+Script)（手書き体） |
 | リセットCSS | [sanitize.css](https://csstools.github.io/sanitize.css/) |
 | 画像素材 | [Unsplash](https://unsplash.com/)（フリー素材） |
-| デザイン参考 | [SANKOU!](https://sankoudesign.com/) |
 | エディタ | Visual Studio Code |
 
 ---
